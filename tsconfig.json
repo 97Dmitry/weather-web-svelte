@@ -1,6 +1,23 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
 
+  "compilerOptions": {
+    "baseUrl": "./src/",
+    "module": "esnext",
+    "lib": ["DOM", "ESNext", "WebWorker"],
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "importsNotUsedAsValues": "remove",
+    "strict": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "isolatedModules": false,
+    "target": "esnext",
+    "useDefineForClassFields": true,
+    "checkJs": true
+  },
   "include": ["src/**/*"],
   "exclude": ["node_modules/*", "__sapper__/*", "public/*"]
 }
