@@ -1,19 +1,24 @@
-<style>
-  .currentDegrees {
-    color:  #fff;
-  }
-</style>
+<script lang="ts">
+  import ApiService, { LANG, CITIES } from "../services/ApiService";
+  import WeatherCard from "../components/WeatherCard/WeatherCard.svelte";
 
-<script>
-import ApiService, { Lang } from "../services/ApiService";
-import degreesConversion from "../utils/degreesConversion";
-const weather = new ApiService("omsk", Lang.en);
+  const weather = new ApiService(CITIES.OMSK, LANG.RU);
 
-let currentWeather
+  let currentDegrees: number;
+  let cityName: string;
+  let weatherAbout: string;
 
-weather.getCurrentWeather().then(data => currentWeather = degreesConversion(data.data.main.temp))
+  weather
+    .getCurrentWeather()
+    .then(({ data: { current, location } }) => {
+      currentDegrees = current.temp_c;
+      cityName = location.name;
+      weatherAbout = current.condition.text;
+    })
+    .catch((error) => console.log(error));
 </script>
 
-<main>
-  <p class="currentDegrees">Текущая погода: {currentWeather}</p>
-</main>
+<WeatherCard cityName="{cityName}" currentDegrees="{currentDegrees}" weatherAbout="{weatherAbout}" />
+
+<style>
+</style>

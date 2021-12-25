@@ -1,23 +1,29 @@
 import { getCurrentWeather_ApiUrl } from "../utils/getApiUrl";
 import axios from "axios";
+import CurrentWeatherResponseData from "../types/currentWeatherResponseData";
 
 const apiKey = import.meta.env.VITE_OPEN_WEATHER_API_KEY as string;
 
-export enum Lang {
-  en = "en",
+export enum LANG {
+  EN = "en",
+  RU = "ru",
+}
+
+export enum CITIES {
+  OMSK = "Omsk",
 }
 
 class ApiService {
-  private lang: string;
-  private cityName: string;
+  private lang: LANG;
+  private cityName: CITIES;
 
-  constructor(cityName: string, lang: Lang = Lang.en) {
+  constructor(cityName: CITIES, lang: LANG) {
     this.lang = lang;
     this.cityName = cityName;
   }
 
-  async getCurrentWeather() {
-    return await axios.get(getCurrentWeather_ApiUrl(this.cityName, apiKey));
+  async getCurrentWeather(): Promise<CurrentWeatherResponseData> {
+    return await axios.get(getCurrentWeather_ApiUrl({ cityName: this.cityName, apiKey, lang: this.lang }));
   }
 }
 

@@ -1,5 +1,12 @@
-const baseUrl = "https://api.openweathermap.org/data/2.5/weather"
+import { CITIES, LANG } from "../services/ApiService";
 
-export const getCurrentWeather_ApiUrl = (cityName: string, apiKey: string) => {
-  return `${baseUrl}?q=${cityName}&appid=${apiKey}`;
+const baseUrl = " https://api.weatherapi.com/v1";
+
+interface getCurrentWeatherProps {
+  cityName: CITIES;
+  apiKey: string;
+  lang: LANG;
 }
+export const getCurrentWeather_ApiUrl = ({ cityName, apiKey, lang }: getCurrentWeatherProps) => {
+  return `${baseUrl}/current.json?q=${cityName}&lang=${lang}&key=${apiKey}`;
+};
