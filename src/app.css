@@ -11,3 +11,31 @@ main {
 
   padding: 20px 45px;
 }
+
+body, html, #svelte {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+* {padding: 0;margin: 0;border: 0; box-sizing: border-box;}
+a, a:visited, a:hover  {text-decoration: none;}
+a:focus, a:active {outline: none;}
+nav, footer, header, aside {display: block;}
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+  line-height: 24px;
+  font-size: 16px;
+}
+input, button, textarea {font-family: inherit;}
+input::-ms-clear {display: none;}
+button {cursor: pointer;}
+button::-moz-focus-inner {padding: 0;border: 0;}
+li {list-style-type: none;}
+ul li {list-style: none;}
+ul, ol {margin-left: 0;padding-left: 0;}
+img {vertical-align: top;}
+h1, h2, h3, h4, h5, h6 {font-size: inherit;font-weight: 400;margin: 0;}

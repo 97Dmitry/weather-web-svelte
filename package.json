@@ -9,7 +9,6 @@
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
     "check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
-    "env:check": "node ./src/validations/envValidate.ts",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "format": "prettier --write --no-error-on-unmatched-pattern ./src/**/*.{js,svelte,html,ts}",
     "lint": "eslint './src/**/*.{js,ts,svelte}'",

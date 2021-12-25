@@ -1,19 +1,30 @@
-<style>
-  .currentDegrees {
-    color:  #fff;
-  }
-</style>
+<script lang="ts">
+  import ApiService, { LANG, CITIES } from "../services/ApiService";
 
-<script>
-import ApiService, { Lang } from "../services/ApiService";
-import degreesConversion from "../utils/degreesConversion";
-const weather = new ApiService("omsk", Lang.en);
+  const weather = new ApiService(CITIES.OMSK, LANG.RU);
 
-let currentWeather
+  let currentWeather: number;
+  let city: string;
+  let weatherAbout: string;
 
-weather.getCurrentWeather().then(data => currentWeather = degreesConversion(data.data.main.temp))
+  weather
+    .getCurrentWeather()
+    .then(({ data: { current, location } }) => {
+      currentWeather = current.temp_c;
+      city = location.name;
+      weatherAbout = current.condition.text;
+    })
+    .catch((error) => console.log(error));
 </script>
 
 <main>
-  <p class="currentDegrees">Текущая погода: {currentWeather}</p>
+  <p class="currentDegrees">
+    Текущая погода в городе {city}: {currentWeather}, {weatherAbout}
+  </p>
 </main>
+
+<style>
+  .currentDegrees {
+    color: #fff;
+  }
+</style>
