@@ -33,7 +33,7 @@ module.exports = {
     // See https://github.com/sveltejs/eslint-plugin-svelte3/issues/70
     "svelte3/ignore-styles": () => true,
   },
-  ignorePatterns: ["node_modules", ".eslintrc.js"],
+  ignorePatterns: ["node_modules", ".eslintrc.js", "svelte.config.js"],
   plugins: ["@typescript-eslint", "svelte3"],
   rules: {
     indent: ["error", 2],
